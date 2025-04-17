@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Abazi Real Estate | Premium Properties in North Macedonia</title>
+  <meta name="description" content="Trusted real estate agency in Tetovo offering residential and commercial properties, investment opportunities, and property management services.">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #2a2a2a;       /* Dark text */
+      --secondary: #059669;     /* Emerald green (brand color) */
+      --accent: #047857;        /* Darker green */
+      --light: #f5f5f4;         /* Light background */
+      --highlight: #d1fae5;     /* Light green highlight */
+    }
+    
+    body {
+      font-family: 'Montserrat', sans-serif;
+      margin: 0;
+      line-height: 1.6;
+      color: var(--primary);
+      background-color: white;
+    }
+
+    /* Header Styles */
+    header {
+      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                  url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+      color: white;
+      text-align: center;
+      padding: 100px 20px;
+      min-height: 60vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+
+    .logo-icon {
+      width: 60px;
+      height: 60px;
+      background-color: var(--secondary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-family: 'Playfair Display', serif;
+      font-weight: bold;
+      font-size: 24px;
+    }
+
+    .logo-text {
+      text-align: left;
+    }
+
+    .logo-main {
+      font-family: 'Playfair Display', serif;
+      font-size: 32px;
+      font-weight: bold;
+      line-height: 1;
+      color: white;
+    }
+
+    .logo-sub {
+      font-size: 14px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      opacity: 0.9;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8em;
+      margin-bottom: 20px;
+    }
+
+    /* Navigation */
+    nav {
+      background-color: white;
+      padding: 15px 0;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    nav ul {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+      padding: 5px 0;
+      position: relative;
+      transition: color 0.3s ease;
+    }
+
+    nav a:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: var(--secondary);
+      transition: width 0.3s ease;
+    }
+
+    nav a:hover:after {
+      width: 100%;
+    }
+
+    nav a:hover {
+      color: var(--secondary);
+    }
+
+    /* Main Content */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    section {
+      padding: 80px 0;
+    }
+
+    h2 {
+      font-family: 'Playfair Display', serif;
+      text-align: center;
+      font-size: 2.5em;
+      margin-bottom: 50px;
+      position: relative;
+    }
+
+    h2:after {
+      content: '';
+      position: absolute;
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 3px;
+      background-color: var(--secondary);
+    }
+
+    /* Property Listings */
+    .property-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 30px;
+    }
+
+    .property-card {
+      background: white;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .property-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .property-image {
+      height: 250px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .property-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .property-card:hover .property-image img {
+      transform: scale(1.05);
+    }
+
+    .property-badge {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background-color: var(--secondary);
+      color: white;
+      padding: 5px 10px;
+      border-radius: 4px;
+      font-weight: bold;
+      font-size: 0.8em;
+    }
+
+    .property-content {
+      padding: 20px;
+    }
+
+    .property-price {
+      font-size: 1.5em;
+      font-weight: bold;
+      color: var(--secondary);
+      margin-bottom: 10px;
+    }
+
+    .property-address {
+      color: #666;
+      margin-bottom: 15px;
+    }
+
+    .property-features {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 15px;
+    }
+
+    .property-feature {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 0.9em;
+    }
+
+    .btn {
+      display: inline-block;
+      background-color: var(--secondary);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background-color 0.3s ease;
+      margin-top: 10px;
+    }
+
+    .btn:hover {
+      background-color: var(--accent);
+    }
+
+    /* Services */
+    .services {
+      background-color: var(--light);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+
+    .service-card {
+      background: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+      text-align: center;
+    }
+
+    .service-icon {
+      font-size: 2.5em;
+      color: var(--secondary);
+      margin-bottom: 20px;
+    }
+
+    /* Agents */
+    .agent-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+
+    .agent-card {
+      text-align: center;
+    }
+
+    .agent-photo {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin: 0 auto 20px;
+      border: 3px solid var(--highlight);
+    }
+
+    /* Contact Form */
+    .contact-form input,
+    .contact-form textarea,
+    .contact-form select {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .contact-form button {
+      background-color: var(--secondary);
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background-color 0.3s ease;
+    }
+
+    .contact-form button:hover {
+      background-color: var(--accent);
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--primary);
+      color: white;
+      padding: 60px 0 30px;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+
+    .footer-column h3 {
+      font-family: 'Playfair Display', serif;
+      color: var(--secondary);
+      margin-top: 0;
+      margin-bottom: 20px;
+    }
+
+    .footer-column ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-column li {
+      margin-bottom: 10px;
+    }
+
+    .footer-column a {
+      color: white;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .footer-column a:hover {
+      color: var(--highlight);
+    }
+
+    .copyright {
+      text-align: center;
+      padding-top: 30px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      header {
+        padding: 80px 20px;
+      }
+      
+      nav ul {
+        flex-direction: column;
+        gap: 15px;
+        align-items: center;
+      }
+      
+      section {
+        padding: 50px 0;
+      }
+      
+      .property-grid,
+      .services-grid,
+      .agent-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header with Logo -->
+  <header>
+    <div class="logo">
+      <div class="logo-icon">AE</div>
+      <div class="logo-text">
+        <div class="logo-main">Abazi Real Estate</div>
+        <div class="logo-sub">Tetovo, North Macedonia</div>
+      </div>
+    </div>
+    <h1>Find Your Perfect Property</h1>
+    <p>Premium residential and commercial real estate services</p>
+  </header>
+
+  <!-- Navigation -->
+  <nav>
+    <ul>
+      <li><a href="#featured">Featured Properties</a></li>
+      <li><a href="#services">Our Services</a></li>
+      <li><a href="#agents">Our Agents</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="container">
+    <!-- Featured Properties -->
+    <section id="featured">
+      <h2>Featured Properties</h2>
+      <div class="property-grid">
+        <div class="property-card">
+          <div class="property-image">
+            <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Modern House">
+            <div class="property-badge">For Sale</div>
+          </div>
+          <div class="property-content">
+            <div class="property-price">€185,000</div>
+            <div class="property-address">Bardhosh, Tetovo</div>
+            <div class="property-features">
+              <div class="property-feature">4 beds</div>
+              <div class="property-feature">3 baths</div>
+              <div class="property-feature">220 m²</div>
+            </div>
+            <p>Beautiful modern house with mountain views and spacious garden.</p>
+            <a href="#" class="btn">View Details</a>
+          </div>
+        </div>
+
+        <div class="property-card">
+          <div class="property-image">
+            <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Apartment">
+            <div class="property-badge">For Rent</div>
+          </div>
+          <div class="property-content">
+            <div class="property-price">€450/month</div>
+            <div class="property-address">Center, Tetovo</div>
+            <div class="property-features">
+              <div class="property-feature">2 beds</div>
+              <div class="property-feature">1 bath</div>
+              <div class="property-feature">85 m²</div>
+            </div>
+            <p>Modern apartment in city center with balcony and parking space.</p>
+            <a href="#" class="btn">View Details</a>
+          </div>
+        </div>
+
+        <div class="property-card">
+          <div class="property-image">
+            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Commercial Property">
+            <div class="property-badge">Commercial</div>
+          </div>
+          <div class="property-content">
+            <div class="property-price">€320,000</div>
+            <div class="property-address">Industrial Zone, Tetovo</div>
+            <div class="property-features">
+              <div class="property-feature">800 m²</div>
+              <div class="property-feature">Office Space</div>
+              <div class="property-feature">Parking</div>
+            </div>
+            <p>Excellent commercial space suitable for offices or light manufacturing.</p>
+            <a href="#" class="btn">View Details</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="services">
+      <h2>Our Services</h2>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">🏠</div>
+          <h3>Property Sales</h3>
+          <p>Comprehensive assistance with buying and selling residential and commercial properties.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🔑</div>
+          <h3>Property Rental</h3>
+          <p>Management of rental properties for both landlords and tenants.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">📈</div>
+          <h3>Investment Consulting</h3>
+          <p>Expert advice on real estate investment opportunities in the region.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🏢</div>
+          <h3>Property Management</h3>
+          <p>Full-service management for rental properties and commercial buildings.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Agents -->
+    <section id="agents">
+      <h2>Our Agents</h2>
+      <div class="agent-grid">
+        <div class="agent-card">
+          <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80" alt="Agent 1" class="agent-photo">
+          <h3>Arben Abazi</h3>
+          <p>Founder & Senior Agent</p>
+          <p>+389 70 123 456</p>
+        </div>
+        <div class="agent-card">
+          <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80" alt="Agent 2" class="agent-photo">
+          <h3>Elmedina Abazi</h3>
+          <p>Sales Specialist</p>
+          <p>+389 70 234 567</p>
+        </div>
+        <div class="agent-card">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80" alt="Agent 3" class="agent-photo">
+          <h3>Besian Rexhepi</h3>
+          <p>Commercial Properties</p>
+          <p>+389 70 345 678</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <h2>Contact Us</h2>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px;">
+        <div>
+          <h3>Our Office</h3>
+          <p><strong>Address:</strong> Blvd. Ilindenska 123, Tetovo 1200</p>
+          <p><strong>Phone:</strong> +389 44 123 456</p>
+          <p><strong>Email:</strong> info@abazirealestate.com</p>
+          <p><strong>Hours:</strong> Mon-Fri: 9:00-17:00</p>
+          
+          <h3 style="margin-top: 30px;">Location</h3>
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2937.198051800445!2d20.97394661539502!3d42.00937487921045!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1354143ff5886f11%3A0x4e37b527f7cc0b7c!2sTetovo%2C%20North%20Macedonia!5e0!3m2!1sen!2smk!4v1618396472422!5m2!1sen!2smk" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+        <div>
+          <h3>Send Inquiry</h3>
+          <form class="contact-form">
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Email Address" required>
+            <input type="tel" placeholder="Phone Number">
+            <select required>
+              <option value="">I'm interested in...</option>
+              <option>Buying a property</option>
+              <option>Renting a property</option>
+              <option>Selling my property</option>
+              <option>Property management</option>
+              <option>Other inquiry</option>
+            </select>
+            <textarea rows="5" placeholder="Your Message"></textarea>
+            <button type="submit">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-column">
+          <h3>Abazi Real Estate</h3>
+          <p>Premium real estate services in Tetovo and surrounding areas. Part of the Abazi Group family of companies.</p>
+        </div>
+        <div class="footer-column">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="#featured">Featured Properties</a></li>
+            <li><a href="#services">Our Services</a></li>
+            <li><a href="#agents">Our Agents</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Contact</h3>
+          <ul>
+            <li>Blvd. Ilindenska 123</li>
+            <li>Tetovo 1200</li>
+            <li>North Macedonia</li>
+            <li>+389 44 123 456</li>
+          </ul>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>&copy; 2023 Abazi Real Estate. Part of Abazi Group. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
